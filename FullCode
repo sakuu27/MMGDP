@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cookie Examples</h1>
+
+  <h2>Setting a cookie</h2>
+  <button onclick="setCookie()">Set Cookie</button>
+
+  <h2>Reading a cookie</h2>
+  <button onclick="readCookie()">Read Cookie</button>
+
+  <h2>Deleting a cookie</h2>
+  <button onclick="deleteCookie()">Delete Cookie</button>
+
+  <script>
+    // Exemplu: Setarea unui cookie
+    function setCookie() {
+      document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+      alert("Cookie setat cu succes!");
+    }
+
+    // Exemplu: Citirea unui cookie
+    function readCookie() {
+      const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      alert("Valoarea cookie-ului 'username' este: " + cookieValue);
+    }
+
+    // Exemplu: Ștergerea unui cookie
+    function deleteCookie() {
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      alert("Cookie-ul 'username' a fost șters!");
+    }
+  </script>
+</body>
+</html>
