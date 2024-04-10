@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3; /* Schimbați culoarea fundalului */
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #ffffff; /* Schimbați culoarea fundalului containerului */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #333333; /* Schimbați culoarea textului pentru titluri */
+      text-align: center;
+    }
+    p {
+      color: #666666; /* Schimbați culoarea textului pentru paragrafe */
+      text-align: center;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #4caf50; /* Schimbați culoarea de fundal pentru butoane */
+      color: #ffffff; /* Schimbați culoarea textului pentru butoane */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049; /* Schimbați culoarea de fundal pentru butoane la hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cookie Examples</h1>
+    <p>Utilizați butoanele de mai jos pentru a interacționa cu cookie-urile.</p>
+
+    <h2>Setting a cookie</h2>
+    <button onclick="setCookie()">Set Cookie</button>
+
+    <h2>Reading a cookie</h2>
+    <button onclick="readCookie()">Read Cookie</button>
+
+    <h2>Deleting a cookie</h2>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+
+    <h2>Check if a cookie exists</h2>
+    <p id="cookieCheckResult"></p>
+    <button onclick="checkCookie()">Check Cookie</button>
+
+    <h2>Cookie expiration</h2>
+    <p id="cookieExpirationResult"></p>
+    <button onclick="checkCookieExpiration()">Check Expiration</button>
+
+    <script>
+      // Exemplu: Setarea unui cookie
+      function setCookie() {
+        document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+        alert("Cookie setat cu succes!");
+      }
+
+      // Exemplu: Citirea unui cookie
+      function readCookie() {
+        const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        alert("Valoarea cookie-ului 'username' este: " + cookieValue);
+      }
+
+      // Exemplu: Ștergerea unui cookie
+      function deleteCookie() {
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        alert("Cookie-ul 'username' a fost șters!");
+      }
+
+      // Exemplu: Verificarea existenței unui cookie
+      function checkCookie() {
+        var cookieExists = document.cookie.split(';').some((item) => item.trim().startsWith('username='));
+        if (cookieExists) {
+          document.getElementById('cookieCheckResult').innerText = "Cookie-ul 'username' există!";
+        } else {
+          document.getElementById('cookieCheckResult').innerText = "Cookie-ul 'username' NU există!";
+        }
+      }
+
+      // Exemplu: Verificarea expirării unui cookie
+      function checkCookieExpiration() {
+        var expirationDate = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1")).toUTCString();
+        document.getElementById('cookieExpirationResult').innerText = "Cookie-ul 'username' expiră la data: " + expirationDate;
+      }
+    </script>
+  </div>
+</body>
+</html>
